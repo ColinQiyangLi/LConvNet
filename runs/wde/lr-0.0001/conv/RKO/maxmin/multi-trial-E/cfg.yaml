@@ -1,0 +1,70 @@
+<type>: Experiment
+<init>: true
+num_epochs: 256
+train_batch_size: 64
+test_batch_size: 64
+best_metrics_comparator:
+  <type>: default_loss_comparator
+  <init>: false
+dataloaders:
+  <type>: repeated_loaders
+  <init>: false
+  loader_init:
+    <type>: DistributionGANLoader
+    <init>: false
+    gan_sampler_module:
+      <type>: GANSampler
+      <init>: false
+      config:
+        <type>: Munch
+        <init>: true
+        gan_config_json_path: checkpoints/GAN_training_WGAN_GP_STL10_stl10_WGAN_GP_2019_09_18_16_19_05_827732/hparams/hparams.json
+        sample_size: 64
+        test_sample_size: 4096
+        dim: None
+trainer:
+  <type>: Trainer
+  <init>: true
+  post_steps:
+  - <type>: l2_lipschitz_constant_checker
+    <init>: false
+  main_step:
+    <type>: wasserstein_distance_estimation_step
+    <init>: false
+    criterion:
+      <type>: diff_loss
+      <init>: false
+  lr_scheduler:
+    <type>: ExponentialLR
+    <init>: false
+    gamma: 0.96235062639
+  proj_every_n_its: 100
+  optimizer:
+    <type>: RMSprop
+    <init>: false
+    lr: 0.0001
+  net:
+    <type>: DCGANDiscriminator
+    <init>: true
+    scaling: 1.0
+    input_spatial_shape:
+    - 64
+    - 64
+    in_channels: 3
+    out_channels: 1
+    conv_module:
+      <type>: LipschitzConv2d
+      <init>: false
+      conv_module:
+        <type>: RKO
+        <init>: false
+    linear_module:
+      <type>: BjorckLinear
+      <init>: false
+    activation:
+      <type>: GroupSort
+      <init>: true
+      group_size: 2
+      axis: 1
+      new_impl: true
+seed: 4

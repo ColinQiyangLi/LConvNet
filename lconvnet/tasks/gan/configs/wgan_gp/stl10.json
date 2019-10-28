@@ -1,0 +1,22 @@
+{
+    "seed": 0,
+    "task": "GAN_training",
+    "output_root": "out/gan/WGAN_GPS",
+    "gan_type": "WGAN_GP",
+    "data_root": "data/LNets/gan",
+    "split": "",
+    "epoch": 128,
+    "batch_size": 64,
+    "lrG": 0.0002,
+    "lrD": 0.0002,
+    "beta1": 0.5,
+    "beta2": 0.999,
+    "gp_penalty": 50,
+    "gpu_mode": true,
+    "benchmark_mode": true,
+
+    "exp_name": "WGAN_GP_STL10",
+    "dataset": "stl10",
+    "input_size": 64,
+    "hidden": 32
+}

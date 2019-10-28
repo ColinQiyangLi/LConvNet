@@ -1,0 +1,12 @@
+pyyaml>=3.12
+oyaml
+tensorboardX
+einops
+scipy
+torchfile
+munch
+advertorch
+foolbox
+cython
+pot
+sklearn

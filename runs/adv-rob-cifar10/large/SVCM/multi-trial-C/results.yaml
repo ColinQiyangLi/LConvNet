@@ -1,0 +1,32 @@
+accuracy: 0.6964999999999997
+loss: 0.1422797080129385
+sanity_check/conv1.conv-l2-norm: 1.0045305490493774
+sanity_check/conv2.conv-l2-norm: 1.0059220790863037
+sanity_check/conv3.conv-l2-norm: 1.0026434659957886
+sanity_check/conv4.conv-l2-norm: 1.0009846687316895
+sanity_check/linear1-l2-norm: 1.0000015497207642
+sanity_check/linear2-l2-norm: 1.0000016689300537
+sanity_check/linear3-l2-norm: 1.0000003576278687
+sanity_check/layer-l-constant: 1.0141518711161341
+adv_robustness:
+  0.1411764706:
+    lb: 0.5306999877095222
+    lb_dist: 0.23545138831437362
+    pgd-ub: 0.621899983882904
+    pgd-ub-dist: 0.14117394138252695
+    pgd-ub-success-rate: 0.3780999910831451
+    fgsm-ub: 0.6229999840259552
+    fgsm-ub-dist: 0.14089383028585967
+    fgsm-ub-success-rate: 0.3769999903440475
+    natural: 0.6964999824762345
+adv_robustness_mini_eval:
+  0.1411764706:
+    lb: 0.5799999833106995
+    lb_dist: 0.24357099417597056
+    boundary_attack-ub: 0.7199999690055847
+    boundary_attack-ub-dist: 0.013124439333166395
+    boundary_attack-ub-success-rate: 0.2800000011920929
+    pointwise-ub: 0.7599999904632568
+    pointwise-ub-dist: 0.0
+    pointwise-ub-success-rate: 0.23999999463558197
+    natural: 0.7599999904632568

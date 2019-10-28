@@ -1,0 +1,24 @@
+accuracy: 0.9864999999999989
+loss: 0.3767571142911911
+adv_robustness:
+  1.58:
+    lb: 0.42130000809580087
+    lb_dist: 1.4055946833917872
+    pgd-ub: 0.8686000105738639
+    pgd-ub-dist: 1.5798642279713484
+    pgd-ub-success-rate: 0.13140000255405904
+    fgsm-ub: 0.8583000094294548
+    fgsm-ub-dist: 1.422177257971942
+    fgsm-ub-success-rate: 0.14170000273734332
+    natural: 0.9864999990463257
+adv_robustness_mini_eval:
+  1.58:
+    lb: 0.7200000286102295
+    lb_dist: 1.999833564609289
+    boundary_attack-ub: 0.8800000190734864
+    boundary_attack-ub-dist: 1.1760799338420231
+    boundary_attack-ub-success-rate: 0.12000000104308128
+    pointwise-ub: 0.9899999976158143
+    pointwise-ub-dist: 0.99609375
+    pointwise-ub-success-rate: 0.010000000149011612
+    natural: 1.0

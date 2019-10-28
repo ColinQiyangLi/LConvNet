@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --partition=p100
+#SBATCH --gres=gpu:1
+#SBATCH --mem=10G
+#SBATCH --array=0-4%5
+#SBATCH -c 2
+
+list=(
+    "python -m lconvnet.run --cfg runs/adv-rob-mnist/small/L2Nonexpansive/multi-trial-A/cfg.yaml --resume --test"
+    "python -m lconvnet.run --cfg runs/adv-rob-mnist/small/L2Nonexpansive/multi-trial-B/cfg.yaml --resume --test"
+    "python -m lconvnet.run --cfg runs/adv-rob-mnist/small/L2Nonexpansive/multi-trial-E/cfg.yaml --resume --test"
+    "python -m lconvnet.run --cfg runs/adv-rob-mnist/small/L2Nonexpansive/multi-trial-D/cfg.yaml --resume --test"
+    "python -m lconvnet.run --cfg runs/adv-rob-mnist/small/L2Nonexpansive/multi-trial-C/cfg.yaml --resume --test"
+)
+echo "Starting task $SLURM_ARRAY_TASK_ID: ${list[SLURM_ARRAY_TASK_ID]}"
+eval ${list[SLURM_ARRAY_TASK_ID]}

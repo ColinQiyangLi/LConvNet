@@ -1,0 +1,7 @@
+loss: -538.5390994262696
+sanity_check/conv1.conv-l2-norm: 274.7221984863281
+sanity_check/conv2.conv-l2-norm: 2.9294607639312744
+sanity_check/conv3.conv-l2-norm: 0.9999996423721313
+sanity_check/conv4.conv-l2-norm: 1.0002577304840088
+sanity_check/linear-l2-norm: 1.0
+sanity_check/layer-l-constant: 804.9950319332416

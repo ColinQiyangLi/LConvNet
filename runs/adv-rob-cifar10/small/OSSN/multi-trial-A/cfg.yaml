@@ -1,0 +1,109 @@
+<type>: Experiment
+<init>: true
+post_steps:
+- <type>: eval_adv_robustness_batch
+  <init>: false
+  eps_range:
+  - 0.1
+  p: 2
+  mini_eval: false
+- <type>: eval_adv_robustness_batch
+  <init>: false
+  attacker:
+  - <type>: PGDAttacker
+    <init>: true
+    support_projection:
+      <type>: clamp
+      <init>: false
+      min: 0
+      max: 1
+    alpha: 0.01
+    iters: 200
+    rand_start: true
+  - <type>: FGSMAttacker
+    <init>: true
+    support_projection:
+      <type>: clamp
+      <init>: false
+      min: 0
+      max: 1
+  eps_range:
+  - 0.1411764706
+  p: 2
+  mini_eval: false
+- <type>: eval_adv_robustness_batch
+  <init>: false
+  attacker:
+  - <type>: FoolBoxAttacker
+    <init>: true
+    attack_mode: boundary_attack
+  - <type>: FoolBoxAttacker
+    <init>: true
+    attack_mode: pointwise
+  eps_range:
+  - 0.1411764706
+  p: 2
+  mini_eval: true
+dataloaders:
+  <type>: default_dataloader
+  <init>: false
+  dataset:
+    <type>: cifar10
+    <init>: true
+    no_scaling: true
+    mini_test_size: 100
+trainer:
+  <type>: Trainer
+  <init>: true
+  post_steps:
+  - <type>: l2_lipschitz_constant_checker
+    <init>: false
+  main_step:
+    <type>: classification_step
+    <init>: false
+    criterion:
+      <type>: multi_margin_loss_eps
+      <init>: false
+      l_constant: 1.0
+      order: 1.0
+      eps: 0.5
+      p: 2
+  lr_scheduler:
+    <type>: ExponentialLR
+    <init>: false
+    gamma: 0.96235062639
+  net:
+    <type>: SmallConvNet
+    <init>: true
+    scaling: 1.0
+    input_spatial_shape:
+    - 32
+    - 32
+    in_channels: 3
+    out_channels: 10
+    '[submodules]':
+      conv_module:
+        <type>: LipschitzConv2d
+        <init>: false
+        conv_module:
+          <type>: OSSN
+          <init>: false
+          n_iters: 10
+      linear_module:
+        <type>: BjorckLinear
+        <init>: false
+      activation:
+        <type>: GroupSort
+        <init>: true
+        group_size: 2
+        axis: 1
+        new_impl: true
+  optimizer:
+    <type>: Adam
+    <init>: false
+    lr: 0.001
+  proj_every_n_its: 100
+num_epochs: 200
+seed: 0
+train_batch_size: 128
+test_batch_size: 100

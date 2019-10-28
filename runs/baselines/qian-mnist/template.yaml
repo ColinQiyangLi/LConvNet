@@ -1,0 +1,75 @@
+<type>: Experiment
+<init>: true
+post_steps:
+- <type>: eval_adv_robustness_batch
+  <init>: false
+  attacker:
+  - <type>: PGDAttacker
+    <init>: true
+    support_projection:
+      <type>: clamp
+      <init>: false
+      min: 0
+      max: 1
+    alpha: 0.01
+    iters: 200
+    rand_start: true
+  - <type>: FGSMAttacker
+    <init>: true
+    support_projection:
+      <type>: clamp
+      <init>: false
+      min: 0
+      max: 1
+  eps_range:
+  - 1.58
+  p: 2
+  force_lipschitz_constant: 1.41421356237
+  mini_eval: false
+- <type>: eval_adv_robustness_batch
+  <init>: false
+  attacker:
+  - <type>: FoolBoxAttacker
+    <init>: true
+    attack_mode: boundary_attack
+  - <type>: FoolBoxAttacker
+    <init>: true
+    attack_mode: pointwise
+  eps_range:
+  - 1.58
+  p: 2
+  mini_eval: true
+dataloaders:
+  <type>: default_dataloader
+  <init>: false
+  dataset:
+    <type>: mnist
+    <init>: true
+    mini_test_size: 100
+trainer:
+  <type>: Trainer
+  <init>: true
+  lr_scheduler:
+    <type>: ExponentialLR
+    <init>: false
+    gamma: 0.96235062639
+  main_step:
+    <type>: classification_step
+    <init>: false
+    criterion:
+      <type>: cross_entropy
+      <init>: false
+  net:
+    <type>: qian
+    <init>: true
+    dataset_name: mnist
+    model_index|model-3: 3
+    model_index|model-4: 4
+  optimizer:
+    <type>: Adam
+    <init>: false
+    lr: 0.001
+  proj_every_n_its: 100
+num_epochs: 200
+test_batch_size: 20
+train_batch_size: 20
