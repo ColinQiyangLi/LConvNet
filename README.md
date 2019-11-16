@@ -1,4 +1,5 @@
-
+# Introduction
+This is the codebase for the paper "[Preventing Gradient Attenuation in Lipschitz Constrained Convolutional Networks](https://arxiv.org/abs/1911.00937)" by Qiyang Li, Saminul Haque, Cem Anil, James Lucas, Roger Grosse, Jörn-Henrik Jacobsen to appear in NeurIPS 2019.
 
 # Setup [Anaconda, CUDA10, Python-3.6, Pytorch 1.0.1.post2]
 ```
@@ -112,3 +113,14 @@ lconvnet
 - fc: fully connected network
 - conv: convolutional neural network
 - `x`-layer: neural network with `x` hidden layers. Usually only used in describing fc network
+
+#Citation
+If you use this work, please cite with
+```
+@article{li2019lconvnet,
+  title={Preventing Gradient Attenuation in Lipschitz Constrained Convolutional Networks},
+  author={Li, Qiyang and Haque, Saminul and Anil, Cem and Lucas, James and Grosse, Roger and Jacobsen, J{\"o}rn-Henrik},
+  journal={Conference on Neural Information Processing Systems},
+  year={2019}
+}
+```
