@@ -45,12 +45,17 @@ python -m lconvnet.run --cfg runs/baselines/qian-cifar10/model-3/cfg.yaml --test
 ## Wasserstein Distance Estimation Experiments
 To launch a Wasserstein distance estimation experiment with BCOP, MaxMin activation function with a learning rate of 0.0001:
 ```
-python -m lconvnet.run --cfg runs/wde/lr-0.0001/conv/BCOP/maxmin/multi-trial-A/cfg.yaml
+python -m lconvnet.run --cfg runs/wde_stl/lr-0.0001/conv/BCOP/maxmin/multi-trial-A/cfg.yaml
+```
+
+To launch the same experiment on the cifar10 dataset: 
+```
+python -m lconvnet.run --cfg runs/wde_cifar10/lr-0.0001/conv/BCOP/maxmin/multi-trial-A/cfg.yaml
 ```
 
 The following command will report the lower-bound estimate of the model loaded from the checkpoint:
 ```
-python -m lconvnet.run --cfg runs/wde/lr-0.0001/conv/BCOP/maxmin/multi-trial-A/cfg.yaml --resume --test
+python -m lconvnet.run --cfg runs/wde_stl/lr-0.0001/conv/BCOP/maxmin/multi-trial-A/cfg.yaml --resume --test
 ```
 
 ## Table Generation
