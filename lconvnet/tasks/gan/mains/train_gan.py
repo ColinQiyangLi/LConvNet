@@ -8,7 +8,6 @@ mpl.use("Agg")
 
 from lconvnet.tasks.gan.models.WGAN import WGAN
 from lconvnet.tasks.gan.models.WGAN_GP import WGAN_GP
-from lconvnet.tasks.gan.models.LWGAN import LWGAN
 from lconvnet.tasks.gan.gan_utils import process_config
 from lconvnet.tasks.gan.gan_utils import set_experiment_seed
 
