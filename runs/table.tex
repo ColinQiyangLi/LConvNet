@@ -22,14 +22,14 @@
 \multirow{4}{*}{\textbf{{MNIST}}}&\multirow{2}{*}{\textbf{Small}}&Clean&$96.86\pm0.13$&$97.28\pm0.08$&$97.24\pm0.09$&$\mathbf{97.54}\pm0.06$\\%
 &&Robust&$42.95\pm1.09$&$43.58\pm0.44$&$28.94\pm1.58$&$\mathbf{45.84}\pm0.90$\\%
 \cmidrule{2-7}%
-&\multirow{2}{*}{\textbf{Large}}&Clean&$98.31\pm0.03$&$98.44\pm0.05$&$97.93\pm0.05$&$\mathbf{98.69}\pm0.01$\\%
-&&Robust&$53.77\pm1.02$&$55.18\pm0.46$&$38.00\pm1.82$&$\mathbf{56.37}\pm0.33$\\%
+&\multirow{2}{*}{\textbf{Large}}&Clean&$98.31\pm0.03$&$98.44\pm0.05$&$97.93\pm0.05$&$\mathbf{98.77}\pm0.05$\\%
+&&Robust&$53.77\pm1.02$&$55.18\pm0.46$&$38.00\pm1.82$&$\mathbf{56.66}\pm0.23$\\%
 \cmidrule{1-7}%
 \multirow{4}{*}{\textbf{{CIFAR10}}}&\multirow{2}{*}{\textbf{Small}}&Clean&$62.18\pm0.66$&$61.77\pm0.63$&$62.39\pm0.46$&$\mathbf{64.53}\pm0.30$\\%
 &&Robust&$48.03\pm0.54$&$47.46\pm0.53$&$47.59\pm0.56$&$\mathbf{50.01}\pm0.21$\\%
 \cmidrule{2-7}%
-&\multirow{2}{*}{\textbf{Large}}&Clean&$67.51\pm0.47$&$70.01\pm0.26$&$69.65\pm0.38$&$\mathbf{72.16}\pm0.23$\\%
-&&Robust&$53.64\pm0.49$&$55.76\pm0.16$&$53.61\pm0.51$&$\mathbf{58.26}\pm0.17$\\%
+&\multirow{2}{*}{\textbf{Large}}&Clean&$67.51\pm0.47$&$70.01\pm0.26$&$69.65\pm0.38$&$\mathbf{72.41}\pm0.22$\\%
+&&Robust&$53.64\pm0.49$&$55.76\pm0.16$&$53.61\pm0.51$&$\mathbf{58.72}\pm0.23$\\%
 \cmidrule{1-7}%
 \end{tabularx}
 
@@ -39,11 +39,11 @@
 \begin{tabularx}{\textwidth}{c|c|cccc}%
 \textbf{Dataset}&&\textbf{BCOP-Large}&\textbf{FC-3}&\textbf{KW-Large }&\textbf{KW-Resnet}\\%
 \cmidrule{1-6}%
-\multirow{2}{*}{\textbf{{MNIST}}}&Clean&$98.69\pm0.01$&$\mathbf{98.71}\pm0.02$&{-}&{-}\\%
-&Robust&$\mathbf{56.37}\pm0.33$&$54.46\pm0.30$&{-}&{-}\\%
+\multirow{2}{*}{\textbf{{MNIST}}}&Clean&$\mathbf{98.77}\pm0.05$&$98.71\pm0.02$&{-}&{-}\\%
+&Robust&$\mathbf{56.66}\pm0.23$&$54.46\pm0.30$&{-}&{-}\\%
 \cmidrule{1-6}%
-\multirow{2}{*}{\textbf{{CIFAR10}}}&Clean&$\mathbf{72.16}\pm0.23$&$62.60\pm0.39$&{-}&{-}\\%
-&Robust&$\mathbf{58.26}\pm0.17$&$49.97\pm0.35$&{-}&{-}\\%
+\multirow{2}{*}{\textbf{{CIFAR10}}}&Clean&$\mathbf{72.41}\pm0.22$&$62.60\pm0.39$&{-}&{-}\\%
+&Robust&$\mathbf{58.72}\pm0.23$&$49.97\pm0.35$&{-}&{-}\\%
 \cmidrule{1-6}%
 \end{tabularx}
 
@@ -62,9 +62,9 @@ FGSM&$49.98$&$\mathbf{51.57}\pm0.18$\\%
 \cmidrule{1-3}%
 Large&&\\%
 \cmidrule{1-3}%
-Clean&$60.14$&$\mathbf{72.16}\pm0.23$\\%
-PGD&$55.53$&$\mathbf{64.12}\pm0.13$\\%
-FGSM&$55.55$&$\mathbf{64.24}\pm0.12$\\%
+Clean&$60.14$&$\mathbf{72.41}\pm0.22$\\%
+PGD&$55.53$&$\mathbf{64.39}\pm0.26$\\%
+FGSM&$55.55$&$\mathbf{64.53}\pm0.25$\\%
 \end{tabularx}%
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}%
@@ -79,9 +79,9 @@ PA (*)&$63.00$&$\mathbf{74.00}\pm2.28$\\%
 \cmidrule{1-3}%
 Large&&\\%
 \cmidrule{1-3}%
-Clean (*)&$68.00$&$\mathbf{78.40}\pm1.96$\\%
-BA (*)&$64.00$&$\mathbf{71.00}\pm2.28$\\%
-PA (*)&$68.00$&$\mathbf{78.40}\pm1.96$\\%
+Clean (*)&$68.00$&$\mathbf{77.60}\pm1.74$\\%
+BA (*)&$64.00$&$\mathbf{71.20}\pm1.60$\\%
+PA (*)&$68.00$&$\mathbf{77.20}\pm1.60$\\%
 \end{tabularx}%
 \end{minipage}
 
@@ -112,14 +112,14 @@ PA (*)&$68.00$&$\mathbf{78.40}\pm1.96$\\%
 \multirow{4}{*}{\textbf{{MNIST}}}&\multirow{2}{*}{\textbf{Small}}&Clean&$93.57\pm0.17$&$95.85\pm0.12$&$\mathbf{97.54}\pm0.06$\\%
 &&Robust&$7.51\pm1.18$&$39.77\pm0.73$&$\mathbf{45.84}\pm0.90$\\%
 \cmidrule{2-6}%
-&\multirow{2}{*}{\textbf{Large}}&Clean&$69.12\pm5.61$&$96.76\pm0.11$&$\mathbf{98.69}\pm0.01$\\%
-&&Robust&$0.00\pm0.00$&$37.79\pm1.21$&$\mathbf{56.37}\pm0.33$\\%
+&\multirow{2}{*}{\textbf{Large}}&Clean&$65.20\pm3.94$&$96.76\pm0.11$&$\mathbf{98.77}\pm0.05$\\%
+&&Robust&$0.00\pm0.00$&$37.79\pm1.21$&$\mathbf{56.66}\pm0.23$\\%
 \cmidrule{1-6}%
 \multirow{4}{*}{\textbf{{CIFAR10}}}&\multirow{2}{*}{\textbf{Small}}&Clean&$50.61\pm0.65$&$58.82\pm0.67$&$\mathbf{64.53}\pm0.30$\\%
 &&Robust&$36.44\pm0.70$&$44.65\pm0.61$&$\mathbf{50.01}\pm0.21$\\%
 \cmidrule{2-6}%
-&\multirow{2}{*}{\textbf{Large}}&Clean&$47.70\pm0.92$&$56.75\pm0.68$&$\mathbf{72.16}\pm0.23$\\%
-&&Robust&$27.47\pm1.37$&$43.40\pm0.46$&$\mathbf{58.26}\pm0.17$\\%
+&\multirow{2}{*}{\textbf{Large}}&Clean&$47.14\pm0.38$&$56.75\pm0.68$&$\mathbf{72.41}\pm0.22$\\%
+&&Robust&$27.43\pm1.26$&$43.40\pm0.46$&$\mathbf{58.72}\pm0.23$\\%
 \cmidrule{1-6}%
 \end{tabularx}
 
@@ -129,11 +129,11 @@ PA (*)&$68.00$&$\mathbf{78.40}\pm1.96$\\%
 \begin{tabularx}{\textwidth}{c|c|ccc}%
 \textbf{Dataset}&&\textbf{BCOP-Large}&\textbf{FC-3}&\textbf{MMR-Universal}\\%
 \cmidrule{1-5}%
-\multirow{2}{*}{\textbf{{MNIST}}}&Clean&$98.69\pm0.01$&$\mathbf{98.71}\pm0.02$&{-}\\%
-&Robust&$97.04\pm0.03$&$\mathbf{97.06}\pm0.02$&{-}\\%
+\multirow{2}{*}{\textbf{{MNIST}}}&Clean&$\mathbf{98.77}\pm0.05$&$98.71\pm0.02$&{-}\\%
+&Robust&$\mathbf{97.11}\pm0.07$&$97.06\pm0.02$&{-}\\%
 \cmidrule{1-5}%
-\multirow{2}{*}{\textbf{{CIFAR10}}}&Clean&$\mathbf{72.16}\pm0.23$&$62.60\pm0.39$&{-}\\%
-&Robust&$\mathbf{62.53}\pm0.21$&$53.67\pm0.29$&{-}\\%
+\multirow{2}{*}{\textbf{{CIFAR10}}}&Clean&$\mathbf{72.41}\pm0.22$&$62.60\pm0.39$&{-}\\%
+&Robust&$\mathbf{62.97}\pm0.30$&$53.67\pm0.29$&{-}\\%
 \cmidrule{1-5}%
 \end{tabularx}
 
@@ -143,15 +143,15 @@ PA (*)&$68.00$&$\mathbf{78.40}\pm1.96$\\%
 \begin{tabularx}{\textwidth}{c|c|cccc}%
 \textbf{Dataset}&&\textbf{BCOP-Large}&\textbf{FC-3}&\textbf{QW-3}&\textbf{QW-4}\\%
 \cmidrule{1-6}%
-\multirow{4}{*}{\textbf{{MNIST}}}&Clean&$98.69\pm0.01$&$\mathbf{98.71}\pm0.02$&$98.65$&$98.23$\\%
-&Robust&$\mathbf{56.37}\pm0.33$&$54.46\pm0.30$&$42.13$&$27.59$\\%
-&PGD&$86.38\pm0.16$&$81.96\pm0.16$&$\mathbf{86.86}$&$86.25$\\%
-&FGSM&$\mathbf{86.49}\pm0.16$&$83.64\pm0.10$&$85.83$&$84.17$\\%
+\multirow{4}{*}{\textbf{{MNIST}}}&Clean&$\mathbf{98.77}\pm0.05$&$98.71\pm0.02$&$98.65$&$98.23$\\%
+&Robust&$\mathbf{56.66}\pm0.23$&$54.46\pm0.30$&$42.13$&$27.59$\\%
+&PGD&$86.86\pm0.25$&$81.96\pm0.16$&$\mathbf{86.86}$&$86.25$\\%
+&FGSM&$\mathbf{86.93}\pm0.20$&$83.64\pm0.10$&$85.83$&$84.17$\\%
 \cmidrule{1-6}%
-\multirow{4}{*}{\textbf{{CIFAR10}}}&Clean&$72.16\pm0.23$&$62.60\pm0.39$&$\mathbf{79.15}$&$77.15$\\%
-&Robust&$\mathbf{58.26}\pm0.17$&$49.97\pm0.35$&$44.46$&$31.41$\\%
-&PGD&$64.12\pm0.13$&$50.05\pm0.36$&$\mathbf{72.07}$&$71.89$\\%
-&FGSM&$64.24\pm0.12$&$50.21\pm0.34$&$\mathbf{72.11}$&$71.92$\\%
+\multirow{4}{*}{\textbf{{CIFAR10}}}&Clean&$72.41\pm0.22$&$62.60\pm0.39$&$\mathbf{79.15}$&$77.15$\\%
+&Robust&$\mathbf{58.72}\pm0.23$&$49.97\pm0.35$&$44.46$&$31.41$\\%
+&PGD&$64.39\pm0.26$&$50.05\pm0.36$&$\mathbf{72.07}$&$71.89$\\%
+&FGSM&$64.53\pm0.25$&$50.21\pm0.34$&$\mathbf{72.11}$&$71.92$\\%
 \cmidrule{1-6}%
 \end{tabularx}
 
