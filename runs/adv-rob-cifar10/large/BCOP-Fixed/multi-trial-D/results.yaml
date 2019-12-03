@@ -1,32 +1,36 @@
-accuracy: 0.4899
-loss: 0.2907629369199276
-sanity_check/conv1.conv-l2-norm: 1.0000001192092896
+accuracy: 0.47259999999999996
+loss: 0.2875703227519989
+sanity_check/conv1.conv-l2-norm: 1.000000238418579
 sanity_check/conv2.conv-l2-norm: 1.0000004768371582
 sanity_check/conv3.conv-l2-norm: 1.0000007152557373
 sanity_check/conv4.conv-l2-norm: 1.0000007152557373
-sanity_check/linear1-l2-norm: 1.0000017881393433
-sanity_check/linear2-l2-norm: 1.0000020265579224
-sanity_check/linear3-l2-norm: 1.000000238418579
-sanity_check/layer-l-constant: 1.0000060796879353
+sanity_check/linear1-l2-norm: 1.0000015497207642
+sanity_check/linear2-l2-norm: 1.0000015497207642
+sanity_check/linear3-l2-norm: 1.0000001192092896
+sanity_check/layer-l-constant: 1.0000053644293558
 adv_robustness:
+  0.1:
+    lb: 0.3335999923944473
+    lb_dist: 0.10244543242577223
+    natural: 0.4725999876856804
   0.1411764706:
-    lb: 0.28499999299645423
-    lb_dist: 0.10120841294943966
-    pgd-ub: 0.4286999869346619
-    pgd-ub-dist: 0.14117192058748526
-    pgd-ub-success-rate: 0.5712999859452248
-    fgsm-ub: 0.42969998747110366
-    fgsm-ub-dist: 0.14074386047617754
-    fgsm-ub-success-rate: 0.5702999857068062
-    natural: 0.48989998757839204
+    lb: 0.28409999221563337
+    lb_dist: 0.10244543242577223
+    pgd-ub: 0.41219998985528944
+    pgd-ub-dist: 0.14117126547842052
+    pgd-ub-success-rate: 0.5877999889850617
+    fgsm-ub: 0.41299998968839646
+    fgsm-ub-dist: 0.1407046856590288
+    fgsm-ub-success-rate: 0.586999989748001
+    natural: 0.4725999876856804
 adv_robustness_mini_eval:
   0.1411764706:
-    lb: 0.25
-    lb_dist: 0.09623263308196328
-    boundary_attack-ub: 0.5099999904632568
-    boundary_attack-ub-dist: 0.007702304145359263
-    boundary_attack-ub-success-rate: 0.4899999797344208
-    pointwise-ub: 0.550000011920929
+    lb: 0.26999998092651367
+    lb_dist: 0.09925654456485063
+    boundary_attack-ub: 0.4899999797344208
+    boundary_attack-ub-dist: 0.0057319886617216405
+    boundary_attack-ub-success-rate: 0.5099999904632568
+    pointwise-ub: 0.5299999713897705
     pointwise-ub-dist: 0.0
-    pointwise-ub-success-rate: 0.44999998807907104
-    natural: 0.550000011920929
+    pointwise-ub-success-rate: 0.4699999988079071
+    natural: 0.5299999713897705
