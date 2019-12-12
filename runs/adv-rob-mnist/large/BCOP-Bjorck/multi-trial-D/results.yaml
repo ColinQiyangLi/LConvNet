@@ -1,36 +1,36 @@
-accuracy: 0.9869999999999998
-loss: 0.0546957470709458
-sanity_check/conv1.conv-l2-norm: 1.000000238418579
-sanity_check/conv2.conv-l2-norm: 1.0000004768371582
-sanity_check/conv3.conv-l2-norm: 1.0000009536743164
-sanity_check/conv4.conv-l2-norm: 1.0000008344650269
-sanity_check/linear1-l2-norm: 1.0000022649765015
-sanity_check/linear2-l2-norm: 1.000001311302185
+accuracy: 0.9879999999999999
+loss: 0.05422502289526165
+sanity_check/conv1.conv-l2-norm: 1.0000001192092896
+sanity_check/conv2.conv-l2-norm: 1.0000003576278687
+sanity_check/conv3.conv-l2-norm: 1.0000005960464478
+sanity_check/conv4.conv-l2-norm: 1.0000007152557373
+sanity_check/linear1-l2-norm: 1.0000019073486328
+sanity_check/linear2-l2-norm: 1.0000014305114746
 sanity_check/linear3-l2-norm: 1.000000238418579
-sanity_check/layer-l-constant: 1.000006318107907
+sanity_check/layer-l-constant: 1.0000053644290432
 adv_robustness:
   0.3:
-    lb: 0.9707999795675277
-    lb_dist: 1.5818075378810754
-    natural: 0.9869999772310257
+    lb: 0.9697999787330628
+    lb_dist: 1.582806381990516
+    natural: 0.9879999780654907
   1.58:
-    lb: 0.5663999861478806
-    lb_dist: 1.5818075378810754
-    pgd-ub: 0.8654999804496765
-    pgd-ub-dist: 1.5798528365486173
-    pgd-ub-success-rate: 0.134499996509403
-    fgsm-ub: 0.8666999816894532
-    fgsm-ub-dist: 1.3651978986565547
-    fgsm-ub-success-rate: 0.13329999603331089
-    natural: 0.9869999772310257
+    lb: 0.5670999857783318
+    lb_dist: 1.582806381990516
+    pgd-ub: 0.8657999789714813
+    pgd-ub-dist: 1.5798502133606798
+    pgd-ub-success-rate: 0.13419999644160271
+    fgsm-ub: 0.8664999824762344
+    fgsm-ub-dist: 1.3689371106329928
+    fgsm-ub-success-rate: 0.13349999641999602
+    natural: 0.9879999780654907
 adv_robustness_mini_eval:
   1.58:
-    lb: 0.5600000023841858
-    lb_dist: 1.5819463258981705
-    boundary_attack-ub: 0.8700000047683716
-    boundary_attack-ub-dist: 1.0495291512746077
-    boundary_attack-ub-success-rate: 0.12999999523162842
+    lb: 0.5199999809265137
+    lb_dist: 1.5690222109854222
+    boundary_attack-ub: 0.8799999952316284
+    boundary_attack-ub-dist: 1.0411149635910988
+    boundary_attack-ub-success-rate: 0.11999999731779099
     pointwise-ub: 0.9899999499320984
-    pointwise-ub-dist: 1.5488361120224
+    pointwise-ub-dist: 0.839828372001648
     pointwise-ub-success-rate: 0.009999999776482582
     natural: 1.0

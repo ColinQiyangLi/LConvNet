@@ -11,11 +11,13 @@ from collections import defaultdict
 
 from lconvnet.utils import Accumulator
 
+
 def accuracy_natural(model, x, y, avg=True):
     preds = model(x).detach().argmax(dim=-1)
     if avg:
         return float((preds == y).float().mean())
     return preds == y
+
 
 def pnorm(x, p):
     x = x.flatten(start_dim=1)
@@ -24,6 +26,7 @@ def pnorm(x, p):
         return x.max(dim=-1)
     if p == 2:
         return x.norm(dim=-1)
+
 
 def accuracy_upperbound(model, attacker, x, y, eps, p, avg=True, returns_extra=False):
     """
@@ -56,8 +59,7 @@ def accuracy_lowerbound_lnet(
     one_hot = torch.zeros_like(logits)
     one_hot.scatter_(1, y.view(-1, 1), 1)
     correct_logit = (logits * one_hot).sum(1)
-    worst_wrong_logit = logits[one_hot == 0].view(
-        one_hot.size(0), -1).max(1)[0]
+    worst_wrong_logit = logits[one_hot == 0].view(one_hot.size(0), -1).max(1)[0]
     adv_margin = F.relu(correct_logit - worst_wrong_logit)
     if p == "inf":
         fact = 2.0
@@ -76,6 +78,7 @@ def accuracy_lowerbound_lnet(
     if type(eps) == list:
         return list(map(op, eps))
     return op(eps)
+
 
 def eval_adv_robustness_batch(
     model,
@@ -151,12 +154,10 @@ def eval_adv_robustness_batch(
 
         print(
             "{:.2f} | clean: {:.2f}% |{}{}".format(
-                eps,
-                100.0 - res["natural"] * 100.0,
-                ub_repr, lb_repr
+                eps, 100.0 - res["natural"] * 100.0, ub_repr, lb_repr
             )
         )
-    
+
     if record is not None:
         if mini_eval:
             if "adv_robustness_mini_eval" not in record:
@@ -166,6 +167,7 @@ def eval_adv_robustness_batch(
             if "adv_robustness" not in record:
                 record["adv_robustness"] = {}
             record["adv_robustness"].update(summary)
+
 
 def eval_adv_robustness(
     model,
@@ -177,7 +179,7 @@ def eval_adv_robustness(
     device=None,
     verbose=True,
 ):
-    
+
     print("l-constant:", l_constant)
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -227,40 +229,36 @@ def eval_adv_robustness(
                     assert (
                         (lb & ub) | (~lb)
                     ).all(), "robustness sanity check failed at eps={}".format(eps)
-                
+
                 # Record the upperbound statistics
                 acc(
                     "{att}-ub".format(att=att.attack_mode),
                     float(ub.float().mean()),
                     dtype="scalar",
                 )
+                if ub_dist is not None:
+                    acc(
+                        "{att}-ub-dist".format(att=att.attack_mode),
+                        list(map(float, ub_dist.float())),
+                        dtype="scalar",
+                    )
                 acc(
-                    "{att}-ub-dist".format(att=att.attack_mode),
-                    list(map(float, ub_dist.float())),
-                    dtype="scalar",
-                )
-                acc(
-                    "{att}-ub-success-rate".format(
-                        att=att.attack_mode),
+                    "{att}-ub-success-rate".format(att=att.attack_mode),
                     float(ub_success.float().mean()),
                     dtype="scalar",
                 )
         acc("natural", accuracy_natural(model, x, y), dtype="scalar")
-        print("\r[{}/{}] - {}".format(index + 1,
-                                      total, acc.latest_str()), end="")
+        print("\r[{}/{}] - {}".format(index + 1, total, acc.latest_str()), end="")
     acc.summarize()
     res = acc.collect()
 
     if verbose:
         if "natural" in res:
             print(
-                "\n\nClean Test Error: {:.3f}%".format(
-                    100.0 - res["natural"] * 100.0)
+                "\n\nClean Test Error: {:.3f}%".format(100.0 - res["natural"] * 100.0)
             )
         if "lb" in res:
-            print("Upper Bound Test Error: {:.3f}%".format(
-                100.0 - res["lb"] * 100.0))
+            print("Upper Bound Test Error: {:.3f}%".format(100.0 - res["lb"] * 100.0))
         if "ub" in res:
-            print("Lower Bound Test Error: {:.3f}%".format(
-                100.0 - res["ub"] * 100.0))
+            print("Lower Bound Test Error: {:.3f}%".format(100.0 - res["ub"] * 100.0))
     return res

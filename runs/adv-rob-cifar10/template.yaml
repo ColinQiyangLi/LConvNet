@@ -159,7 +159,6 @@ trainer:
           ortho_mode: bjorck
           mask_half: true
           projection: false
-          orthogonal: True
       linear_module:
         <type>: BjorckLinear
         <init>: false
@@ -179,7 +178,6 @@ trainer:
           ortho_mode: bjorck
           mask_half: true
           projection: false
-          orthogonal: True
           frozen: True
       linear_module:
         <type>: BjorckLinear
@@ -306,7 +304,6 @@ trainer:
           ortho_mode: bjorck
           mask_half: true
           projection: false
-          orthogonal: True
           frozen: True
       linear_module:
         <type>: BjorckLinear

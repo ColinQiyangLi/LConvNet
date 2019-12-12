@@ -113,7 +113,7 @@ def convolution_orthogonal_generator_projs(ksize, cin, cout, ortho, sym_projs):
     if ksize == 1:
         return ortho.unsqueeze(-1).unsqueeze(-1)
     p = block_orth(sym_projs[0], sym_projs[1])
-    for _ in range(ksize - 2):
+    for _ in range(1, ksize - 1):
         p = matrix_conv(p, block_orth(sym_projs[_ * 2], sym_projs[_ * 2 + 1]))
     for i in range(ksize):
         for j in range(ksize):

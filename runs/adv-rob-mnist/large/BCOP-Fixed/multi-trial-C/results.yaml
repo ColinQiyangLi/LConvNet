@@ -1,32 +1,36 @@
-accuracy: 0.7014000000000001
-loss: 1.2041907691955567
+accuracy: 0.6522999999999997
+loss: 1.2168026173114777
 sanity_check/conv1.conv-l2-norm: 1.0000001192092896
 sanity_check/conv2.conv-l2-norm: 1.0000003576278687
 sanity_check/conv3.conv-l2-norm: 1.0000005960464478
 sanity_check/conv4.conv-l2-norm: 1.0000005960464478
-sanity_check/linear1-l2-norm: 1.0000016689300537
+sanity_check/linear1-l2-norm: 1.000001311302185
 sanity_check/linear2-l2-norm: 1.000001311302185
-sanity_check/linear3-l2-norm: 1.0000001192092896
-sanity_check/layer-l-constant: 1.0000047683802649
+sanity_check/linear3-l2-norm: 1.000000238418579
+sanity_check/layer-l-constant: 1.000004529961089
 adv_robustness:
+  0.3:
+    lb: 0.37269999101758006
+    lb_dist: 0.25787960707443564
+    natural: 0.6522999855875969
   1.58:
     lb: 0.0
-    lb_dist: 0.28840025838341354
-    pgd-ub: 0.46579998821020124
-    pgd-ub-dist: 1.5798820242458673
-    pgd-ub-success-rate: 0.534199985563755
-    fgsm-ub: 0.4735999888181686
-    fgsm-ub-dist: 1.3433376638315007
-    fgsm-ub-success-rate: 0.5263999864459038
-    natural: 0.7013999807834626
+    lb_dist: 0.25787960707443564
+    pgd-ub: 0.3988999906182289
+    pgd-ub-dist: 1.5798860104344605
+    pgd-ub-success-rate: 0.601099987924099
+    fgsm-ub: 0.40009999096393584
+    fgsm-ub-dist: 1.3712100248015668
+    fgsm-ub-success-rate: 0.5998999851942063
+    natural: 0.6522999855875969
 adv_robustness_mini_eval:
   1.58:
     lb: 0.0
-    lb_dist: 0.31445646308362485
-    boundary_attack-ub: 0.550000011920929
-    boundary_attack-ub-dist: 0.32585494791467984
-    boundary_attack-ub-success-rate: 0.44999998807907104
-    pointwise-ub: 0.7099999785423279
-    pointwise-ub-dist: 0.125665040879414
-    pointwise-ub-success-rate: 0.28999999165534973
-    natural: 0.7599999904632568
+    lb_dist: 0.28899006662424653
+    boundary_attack-ub: 0.4599999785423279
+    boundary_attack-ub-dist: 0.33729111561896624
+    boundary_attack-ub-success-rate: 0.5399999618530273
+    pointwise-ub: 0.6399999856948853
+    pointwise-ub-dist: 0.1391521700554424
+    pointwise-ub-success-rate: 0.35999998450279236
+    natural: 0.699999988079071
