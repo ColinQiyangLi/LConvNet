@@ -31,6 +31,19 @@ post_steps:
   - 1.58
   p: 2
   mini_eval: false
+- <type>: eval_adv_robustness_batch
+  <init>: false
+  attacker:
+  - <type>: FoolBoxAttacker
+    <init>: true
+    attack_mode: boundary_attack
+  - <type>: FoolBoxAttacker
+    <init>: true
+    attack_mode: pointwise
+  eps_range:
+  - 1.58
+  p: 2
+  mini_eval: true
 dataloaders:
   <type>: default_dataloader
   <init>: false

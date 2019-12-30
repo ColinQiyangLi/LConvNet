@@ -90,7 +90,6 @@ trainer:
           ortho_mode: bjorck
           mask_half: true
           projection: false
-          orthogonal: true
           frozen: true
       linear_module:
         <type>: BjorckLinear
