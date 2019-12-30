@@ -24,7 +24,9 @@ from pylatex import (
 
 CIFAR10Repr = "\\textbf{{CIFAR10}}"
 MNISTRepr = "\\textbf{{MNIST}}"
-WDERepr = "\\textbf{Wasserstein Distance}"
+WDEReprSTL10 = "\\textbf{Wasserstein Distance (STL-10)}"
+WDEReprCIFAR10 = "\\textbf{Wasserstein Distance (CIFAR-10)}"
+
 
 def parse_path(path, config, mode, eps):
     method_str_patterns = [
@@ -40,9 +42,10 @@ def parse_path(path, config, mode, eps):
         ("qian", "QW"),
     ]
     dataset_str_patterns = [
-        ("cifar10", CIFAR10Repr),
-        ("mnist", MNISTRepr),
-        ("wde", WDERepr),
+        ("-cifar10", CIFAR10Repr),
+        ("-mnist", MNISTRepr),
+        ("wde_cifar10", WDEReprCIFAR10),
+        ("wde_stl10", WDEReprSTL10),
     ]
     arch_str_patterns = [
         ("small", "Small"),
@@ -94,7 +97,8 @@ def data_export(
     results = defaultdict(list)
     for dir_name, _, file_list in os.walk(d):
         fn = "results.yaml"
-        if not fn in file_list: continue
+        if not fn in file_list:
+            continue
         rel_path = os.path.relpath(dir_name, d)
         with open(os.path.join(d, rel_path, fn)) as f:
             res = yaml.safe_load(f)
@@ -141,48 +145,75 @@ def data_export(
         "includeheadfoot": True,
     }
     doc = Document(page_numbers=True, geometry_options=geometry_options)
-    doc.packages.append(Package('booktabs'))
-    with doc.create(Section("Table 1", numbering=False)):
-        get_latex_table_type1(doc, final_results)
+    doc.packages.append(Package("booktabs"))
+    # with doc.create(Section("Table 1", numbering=False)):
+    #     get_latex_table_type1(doc, final_results)
 
-    with doc.create(Section("Table 2", numbering=False)):
-        get_latex_table_type1b(doc, final_results)
+    # with doc.create(Section("Table 2", numbering=False)):
+    #     get_latex_table_type1b(doc, final_results)
 
-    with doc.create(Section("Table 3", numbering=False)):
-        with doc.create(MiniPage(width=r"0.5\textwidth")):
-            get_latex_table_type2(
-                doc, final_results, config_names=["Clean", "PGD", "FGSM"]
-            )
-        with doc.create(MiniPage(width=r"0.5\textwidth")):
-            get_latex_table_type2(
-                doc, final_results, config_names=["Clean (*)", "BA (*)", "PA (*)"]
-            )
+    # with doc.create(Section("Table 3", numbering=False)):
+    #     with doc.create(MiniPage(width=r"0.5\textwidth")):
+    #         get_latex_table_type2(
+    #             doc, final_results, config_names=["Clean", "PGD", "FGSM"]
+    #         )
+    #     with doc.create(MiniPage(width=r"0.5\textwidth")):
+    #         get_latex_table_type2(
+    #             doc, final_results, config_names=["Clean (*)", "BA (*)", "PA (*)"]
+    #         )
 
-    with doc.create(Section("Table 4-Maxmin-lr-0.0001", numbering=False)):
-        get_latex_table_type3(doc, final_results, arch_names=["MaxMin"], lr="lr-0.0001")
-    with doc.create(Section("Table 4-ReLU-lr-0.001", numbering=False)):
-        get_latex_table_type3(doc, final_results, arch_names=["ReLU"], lr="lr-0.001")
-    with doc.create(Section("Table 7", numbering=False)):
-        get_latex_table_type1(
-            doc, final_results, method_names=["BCOP-Fixed", "RK-L2NE", "BCOP"]
-        )
-
-    with doc.create(Section("Table 8", numbering=False)):
-        get_latex_table_type1b(
+    with doc.create(Section("Table 4a-Maxmin-lr-0.0001", numbering=False)):
+        get_latex_table_type3(
             doc,
             final_results,
-            method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("MMR", "Universal")],
-            eps=["0.3", "0.1"],
+            dataset_name=WDEReprSTL10,
+            arch_names=["MaxMin"],
+            lr="lr-0.0001",
         )
-
-    
-    with doc.create(Section("Table 9", numbering=False)):
-        get_latex_table_type1b(
+    with doc.create(Section("Table 4a-ReLU-lr-0.001", numbering=False)):
+        get_latex_table_type3(
             doc,
             final_results,
-            method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("QW", "3"), ("QW", "4")],
-            config_names=["Clean", "Robust", "PGD", "FGSM"],
+            dataset_name=WDEReprSTL10,
+            arch_names=["ReLU"],
+            lr="lr-0.001",
         )
+    with doc.create(Section("Table 4b-Maxmin-lr-0.0001", numbering=False)):
+        get_latex_table_type3(
+            doc,
+            final_results,
+            dataset_name=WDEReprCIFAR10,
+            arch_names=["MaxMin"],
+            lr="lr-0.0001",
+        )
+    with doc.create(Section("Table 4b-ReLU-lr-0.001", numbering=False)):
+        get_latex_table_type3(
+            doc,
+            final_results,
+            dataset_name=WDEReprCIFAR10,
+            arch_names=["ReLU"],
+            lr="lr-0.001",
+        )
+    # with doc.create(Section("Table 7", numbering=False)):
+    #     get_latex_table_type1(
+    #         doc, final_results, method_names=["BCOP-Fixed", "RK-L2NE", "BCOP"]
+    #     )
+
+    # with doc.create(Section("Table 8", numbering=False)):
+    #     get_latex_table_type1b(
+    #         doc,
+    #         final_results,
+    #         method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("MMR", "Universal")],
+    #         eps=["0.3", "0.1"],
+    #     )
+
+    # with doc.create(Section("Table 9", numbering=False)):
+    #     get_latex_table_type1b(
+    #         doc,
+    #         final_results,
+    #         method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("QW", "3"), ("QW", "4")],
+    #         config_names=["Clean", "Robust", "PGD", "FGSM"],
+    #     )
     return doc
 
 
@@ -261,7 +292,7 @@ def get_latex_table_type1(
                     num_configs, data=NoEscape(boldify(arch_name))
                 )
                 for j, config_name in enumerate(config_names):
-                    
+
                     row = ()
                     if i == 0 and j == 0:
                         row += (multi_row_outer,)
@@ -275,7 +306,14 @@ def get_latex_table_type1(
                     row += populate_numbers(
                         [
                             results[
-                                (dataset_name, arch_name, method_name, None, config_name, ep)
+                                (
+                                    dataset_name,
+                                    arch_name,
+                                    method_name,
+                                    None,
+                                    config_name,
+                                    ep,
+                                )
                             ]
                             for method_name in method_names
                         ]
@@ -296,7 +334,7 @@ def get_latex_table_type1b(
         ("KW", "Resnet"),
     ],
     eps=["1.58", "0.1411764706"],
-    config_names = ["Clean", "Robust"],
+    config_names=["Clean", "Robust"],
 ):
     dataset_names = [MNISTRepr, CIFAR10Repr]
     num_configs = len(config_names)
@@ -320,7 +358,16 @@ def get_latex_table_type1b(
                 row += (config_name,)
                 row += populate_numbers(
                     [
-                        results[(dataset_name, arch_name, method_name, None, config_name, ep)]
+                        results[
+                            (
+                                dataset_name,
+                                arch_name,
+                                method_name,
+                                None,
+                                config_name,
+                                ep,
+                            )
+                        ]
                         for method_name, arch_name in method_arch_names
                     ]
                 )
@@ -355,7 +402,14 @@ def get_latex_table_type2(
                 row += populate_numbers(
                     [
                         results[
-                            (dataset_name, arch_name, method_name, None, config_name, eps)
+                            (
+                                dataset_name,
+                                arch_name,
+                                method_name,
+                                None,
+                                config_name,
+                                eps,
+                            )
                         ]
                         for method_name in method_names
                     ]
@@ -366,7 +420,11 @@ def get_latex_table_type2(
 
 
 def get_latex_table_type3(
-    doc, results=None, dataset_name=WDERepr, arch_names=["MaxMin", "ReLU"], lr="0.0001"
+    doc,
+    results=None,
+    dataset_name=WDEReprSTL10,
+    arch_names=["MaxMin", "ReLU"],
+    lr="0.0001",
 ):
     method_names = ["OSSN", "RKO", "BCOP"]
     num_archs = len(arch_names)
