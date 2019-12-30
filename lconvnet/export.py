@@ -146,21 +146,21 @@ def data_export(
     }
     doc = Document(page_numbers=True, geometry_options=geometry_options)
     doc.packages.append(Package("booktabs"))
-    # with doc.create(Section("Table 1", numbering=False)):
-    #     get_latex_table_type1(doc, final_results)
+    with doc.create(Section("Table 1", numbering=False)):
+        get_latex_table_type1(doc, final_results)
 
-    # with doc.create(Section("Table 2", numbering=False)):
-    #     get_latex_table_type1b(doc, final_results)
+    with doc.create(Section("Table 2", numbering=False)):
+        get_latex_table_type1b(doc, final_results)
 
-    # with doc.create(Section("Table 3", numbering=False)):
-    #     with doc.create(MiniPage(width=r"0.5\textwidth")):
-    #         get_latex_table_type2(
-    #             doc, final_results, config_names=["Clean", "PGD", "FGSM"]
-    #         )
-    #     with doc.create(MiniPage(width=r"0.5\textwidth")):
-    #         get_latex_table_type2(
-    #             doc, final_results, config_names=["Clean (*)", "BA (*)", "PA (*)"]
-    #         )
+    with doc.create(Section("Table 3", numbering=False)):
+        with doc.create(MiniPage(width=r"0.5\textwidth")):
+            get_latex_table_type2(
+                doc, final_results, config_names=["Clean", "PGD", "FGSM"]
+            )
+        with doc.create(MiniPage(width=r"0.5\textwidth")):
+            get_latex_table_type2(
+                doc, final_results, config_names=["Clean (*)", "BA (*)", "PA (*)"]
+            )
 
     with doc.create(Section("Table 4a-Maxmin-lr-0.0001", numbering=False)):
         get_latex_table_type3(
@@ -194,26 +194,26 @@ def data_export(
             arch_names=["ReLU"],
             lr="lr-0.001",
         )
-    # with doc.create(Section("Table 7", numbering=False)):
-    #     get_latex_table_type1(
-    #         doc, final_results, method_names=["BCOP-Fixed", "RK-L2NE", "BCOP"]
-    #     )
+    with doc.create(Section("Table 7", numbering=False)):
+        get_latex_table_type1(
+            doc, final_results, method_names=["BCOP-Fixed", "RK-L2NE", "BCOP"]
+        )
 
-    # with doc.create(Section("Table 8", numbering=False)):
-    #     get_latex_table_type1b(
-    #         doc,
-    #         final_results,
-    #         method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("MMR", "Universal")],
-    #         eps=["0.3", "0.1"],
-    #     )
+    with doc.create(Section("Table 8", numbering=False)):
+        get_latex_table_type1b(
+            doc,
+            final_results,
+            method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("MMR", "Universal")],
+            eps=["0.3", "0.1"],
+        )
 
-    # with doc.create(Section("Table 9", numbering=False)):
-    #     get_latex_table_type1b(
-    #         doc,
-    #         final_results,
-    #         method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("QW", "3"), ("QW", "4")],
-    #         config_names=["Clean", "Robust", "PGD", "FGSM"],
-    #     )
+    with doc.create(Section("Table 9", numbering=False)):
+        get_latex_table_type1b(
+            doc,
+            final_results,
+            method_arch_names=[("BCOP", "Large"), ("FC", "3"), ("QW", "3"), ("QW", "4")],
+            config_names=["Clean", "Robust", "PGD", "FGSM"],
+        )
     return doc
 
 
