@@ -58,7 +58,7 @@ def cyclic_pad_2d(x, pads, even_h=False, even_w=False):
 
 
 def conv2d_cyclic_pad(
-        x, weight, bias=None, stride=1, padding=0, dilation=1):
+        x, weight, bias=None):
     """
     Implemenation of cyclic padding followed by a normal convolution
     """
@@ -66,7 +66,7 @@ def conv2d_cyclic_pad(
     x = cyclic_pad_2d(x, [kh // 2, kw // 2], (kh % 2 == 0), (kw % 2 == 0))
     if x.dim() == 3:
         x = x.unsqueeze(0)
-    return F.conv2d(x, weight, bias, stride, padding, dilation)
+    return F.conv2d(x, weight, bias)
 
 def bjorck_orthonormalize(
         w, beta=0.5, iters=20, order=1, power_iteration_scaling=False,

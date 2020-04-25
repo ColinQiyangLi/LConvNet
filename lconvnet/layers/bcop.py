@@ -165,17 +165,19 @@ class BCOP(StreamlinedModule, LipschitzModuleL2):
         stride=1,
         padding=None,
         bias=True,
-        mask_half=True,
-        projection=False,
-        ortho_mode="bjorck",
+        mask_half=True,       # deprecated, TODO: remove
+        projection=False,     # deprecated, TODO: remove
+        ortho_mode="bjorck",  # deprecated, TODO: remove
         bjorck_iters=20,
         power_iteration_scaling=True,
         frozen=False,
     ):
         super().__init__()
-        assert stride == 1
-        assert not projection and ortho_mode == "bjorck"
-        assert mask_half
+        assert stride == 1, "BCOP convolution only supports stride 1."
+        assert not projection and ortho_mode == "bjorck"  # these options are deprecated
+        assert mask_half  # this option is deprecated
+        assert padding is None or padding == kernel_size // 2, "BCOP convolution only supports k // 2 padding. actual - {}, required - {}".format(padding, kernel_size // 2)
+
         self.mask_half = mask_half
         self.kernel_size = kernel_size
         self.stride = stride
