@@ -66,7 +66,7 @@ python -m lconvnet.export --dir runs
 ```
 
 # Pre-trained Models and Weights
-All the model weights used in reporting can be downloaded from [here (Google Drive)](https://drive.google.com/open?id=1c42LVshxLvKZCpNrf9frA6NXZSizLdax) or [here (Dropbox)](https://www.dropbox.com/s/o3i8jrolayd4md7/release.rar?dl=0). It contains the `runs` folder with all the model weights and evaluation results placed under the appropriate experiment folders. 
+All the model weights used in reporting can be downloaded from [here (Google Drive)](https://drive.google.com/file/d/1n0k9fLzgoq0y6A6Jc9gOr3FVjis7zfyG/view?usp=sharing) or [here (Dropbox)](https://www.dropbox.com/s/lxbg78ktdgwujfj/LConvNet-2020-04-25-release.zip?dl=0). It contains the `runs` folder with all the model weights and evaluation results placed under the appropriate experiment folders. 
 
 # Generate a Batch of Experiment Configs from Template
 ```
