@@ -119,7 +119,7 @@ lconvnet
 - conv: convolutional neural network
 - `x`-layer: neural network with `x` hidden layers. Usually only used in describing fc network
 
-#Citation
+# Citation
 If you use this work, please cite with
 ```
 @article{li2019lconvnet,
